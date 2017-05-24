@@ -20,10 +20,25 @@ const bodyParser = require('body-parser');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/../views'));
 
+// inclure les controleurs 
+const EnregistrerCtrl = require('./controllers/EnregistrerCtrl');
+const enregistrerCtrl = new EnregistrerCtrl();
+
+const AuthentifierCtrl = require('./controllers/AuthentifierCtrl');
+const authentifierCtrl = new AuthentifierCtrl();
+
+const GenererCtrl = require('./controllers/GenererCtrl');
+const genererCtrl = new GenererCtrl();
+
+// réponse à l'url "/enregistrer"
+app.get('/enregistrer', enregistrerCtrl.indexAction.bind(enregistrerCtrl));
+}
+
+// réponse à l'url "/generer"
+app.get('/generer', genererCtrl.indexAction.bind(genererCtrl));
+
 // réponse à l'url "/" = route par défaut
-app.get('/', function (req, res) {
-	res.send('Ce serait peut être bien de linker un controleur, non ?');
-});
+app.get('/', authentifierCtrl.indexAction.bind(authentifierCtrl));
 
 // lancement du serveur
 app.listen(port, () => console.log(`TEST Server running at http://127.0.0.1:${port}`));
