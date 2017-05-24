@@ -4,11 +4,13 @@
   "description": "TP sur Node JS",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.15.3"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "pug": "^2.0.0-rc.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app/index.js 8080"
   },
   "repository": {
     "type": "git",
