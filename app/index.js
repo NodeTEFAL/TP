@@ -32,7 +32,6 @@ const genererCtrl = new GenererCtrl();
 
 // réponse à l'url "/enregistrer"
 app.get('/enregistrer', enregistrerCtrl.indexAction.bind(enregistrerCtrl));
-}
 
 // réponse à l'url "/generer"
 app.get('/generer', genererCtrl.indexAction.bind(genererCtrl));
