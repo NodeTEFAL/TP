@@ -4,6 +4,11 @@ class AuthentifierCtrl
 	{
 		res.render('./authentifier/index.pug');
     }
+
+    loginAction(req,res)
+    {
+    	res.render('./generer/index.pug');
+    }
 }
 
 module.exports = AuthentifierCtrl;

@@ -39,5 +39,11 @@ app.get('/generer', genererCtrl.indexAction.bind(genererCtrl));
 // réponse à l'url "/" = route par défaut
 app.get('/', authentifierCtrl.indexAction.bind(authentifierCtrl));
 
+// Route en cas de post depuis '/'
+app.post('/', 
+	// console.log('envoi du post dans authentifierCtrl')
+	authentifierCtrl.loginAction.bind(authentifierCtrl)
+		);
+
 // lancement du serveur
 app.listen(port, () => console.log(`TEST Server running at http://127.0.0.1:${port}`));
