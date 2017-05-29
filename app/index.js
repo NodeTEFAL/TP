@@ -30,6 +30,15 @@ const authentifierCtrl = new AuthentifierCtrl();
 const GenererCtrl = require('./controllers/GenererCtrl');
 const genererCtrl = new GenererCtrl();
 
+// Création de middleware pour toutes les requêtes
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+    console.log(`req=${req}`);
+    next();
+});
+
 // réponse à l'url "/enregistrer"
 app.get('/enregistrer', enregistrerCtrl.indexAction.bind(enregistrerCtrl));
 
@@ -39,10 +48,14 @@ app.get('/generer', genererCtrl.indexAction.bind(genererCtrl));
 // réponse à l'url "/" = route par défaut
 app.get('/', authentifierCtrl.indexAction.bind(authentifierCtrl));
 
-// Route en cas de post depuis '/'
-app.post('/', 
-	// console.log('envoi du post dans authentifierCtrl')
+// Route en cas de post depuis un formulaire qui envoie sur '/authentifier'
+app.post('/authentifier', 
 	authentifierCtrl.loginAction.bind(authentifierCtrl)
+		);
+
+// Route en cas de post depuis un formulaire qui envoie sur '/generer'
+app.post('/generer', 
+	genererCtrl.generateAction.bind(genererCtrl)
 		);
 
 // lancement du serveur
