@@ -1,3 +1,9 @@
-/**
- * Created by flavie.dl21 on 24/05/2017.
- */
+class EnregistrerCtrl
+{
+	indexAction(req, res)
+	{
+		res.render('./enregistrer/index.pug');
+    }
+}
+
+module.exports = EnregistrerCtrl;
